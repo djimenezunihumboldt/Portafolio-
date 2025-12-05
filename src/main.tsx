@@ -1,0 +1,40 @@
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
+import App from './App.tsx';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { ColorThemeProvider } from './contexts/ColorThemeContext';
+import { registerServiceWorker, setupInstallPrompt } from './utils/pwaUtils';
+import { initGA, useScrollTracking, useTimeTracking } from './utils/analytics';
+import './index.css';
+
+// Register service worker for PWA
+if (import.meta.env.PROD) {
+  registerServiceWorker();
+  setupInstallPrompt();
+}
+
+// Initialize Google Analytics
+initGA();
+useScrollTracking();
+useTimeTracking();
+
+const recaptchaSiteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <GoogleReCaptchaProvider 
+      reCaptchaKey={recaptchaSiteKey}
+      scriptProps={{ async: true, defer: true }}
+    >
+      <LanguageProvider>
+        <ColorThemeProvider>
+          <ThemeProvider>
+            <App />
+          </ThemeProvider>
+        </ColorThemeProvider>
+      </LanguageProvider>
+    </GoogleReCaptchaProvider>
+  </StrictMode>
+);
