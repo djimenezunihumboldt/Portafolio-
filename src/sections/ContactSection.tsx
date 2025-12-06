@@ -7,7 +7,7 @@ import Toast, { ToastType } from '../components/Toast';
 import { AnalyticsEvents } from '../utils/analytics';
 
 const ContactSection = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',

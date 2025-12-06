@@ -6,7 +6,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ColorThemeProvider } from './contexts/ColorThemeContext';
 import { registerServiceWorker, setupInstallPrompt } from './utils/pwaUtils';
-import { initGA, useScrollTracking, useTimeTracking } from './utils/analytics';
+import { initGA, setupScrollTracking, setupTimeTracking } from './utils/analytics';
 import './index.css';
 
 // Initialize EmailJS
@@ -23,8 +23,8 @@ if (import.meta.env.PROD) {
 
 // Initialize Google Analytics
 initGA();
-useScrollTracking();
-useTimeTracking();
+setupScrollTracking();
+setupTimeTracking();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

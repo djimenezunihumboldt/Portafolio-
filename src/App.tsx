@@ -22,7 +22,6 @@ const ProjectsSection = lazy(() => import('./sections/ProjectsSection'));
 const ContactSection = lazy(() => import('./sections/ContactSection'));
 const CertificationsSection = lazy(() => import('./sections/CertificationsSection'));
 const AnimatedStats = lazy(() => import('./components/AnimatedStats'));
-const Timeline = lazy(() => import('./components/Timeline'));
 
 function App() {
   const [showScrollTop, setShowScrollTop] = useState(false);

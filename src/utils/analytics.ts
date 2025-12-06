@@ -93,8 +93,8 @@ export const AnalyticsEvents = {
   chatbotMessage: () => trackEvent('chatbot_message'),
 };
 
-// Hook for tracking scroll depth
-export const useScrollTracking = (): void => {
+// Track scroll depth
+export const setupScrollTracking = (): void => {
   if (typeof window === 'undefined') return;
 
   let maxScroll = 0;
@@ -121,8 +121,8 @@ export const useScrollTracking = (): void => {
   window.addEventListener('scroll', handleScroll, { passive: true });
 };
 
-// Hook for tracking time on page
-export const useTimeTracking = (): void => {
+// Track time on page
+export const setupTimeTracking = (): void => {
   if (typeof window === 'undefined') return;
 
   const startTime = Date.now();
