@@ -98,7 +98,16 @@ const ExperienceSection = () => {
             />
             
             <div className="space-y-8">
-              {allExperiences.map((exp, index) => (
+              {allExperiences.map((exp, index) => {
+                  // Obtener color del glow basado en el gradiente
+                  let glowColor = 'rgba(59, 130, 246, 0.5)'; // default blue
+                  if (exp.color.includes('green')) glowColor = 'rgba(34, 197, 94, 0.5)';
+                  if (exp.color.includes('purple')) glowColor = 'rgba(168, 85, 247, 0.5)';
+                  if (exp.color.includes('orange')) glowColor = 'rgba(234, 88, 12, 0.5)';
+                  
+                  const glowColorBright = glowColor.replace('0.5', '0.7');
+                  
+                  return (
                 <motion.div 
                   key={index} 
                   className="relative flex items-start"
@@ -132,8 +141,12 @@ const ExperienceSection = () => {
                   {/* Content */}
                   <div className="ml-8 flex-1">
                     <motion.div 
-                      className="group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                      whileHover={{ y: -5, scale: 1.02 }}
+                      className="group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-secondary-700"
+                      style={{
+                        '--exp-glow': glowColor,
+                        '--exp-glow-bright': glowColorBright
+                      } as React.CSSProperties}
+                      whileHover={{ y: -5, scale: 1.02, boxShadow: `0 0 40px ${glowColorBright}, 0 25px 50px -12px rgba(0, 0, 0, 0.25)` }}
                       transition={{ duration: 0.3 }}
                     >
                       {/* Background gradient on hover */}
@@ -222,7 +235,8 @@ const ExperienceSection = () => {
                     </motion.div>
                   </div>
                 </motion.div>
-              ))}
+              );
+              })}
             </div>
             
             {/* Botón Ver más */}

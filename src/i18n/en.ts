@@ -186,8 +186,8 @@ export const en = {
         desc: 'Professional weather application with geolocation, 5-day forecast, favorite cities and dynamic backgrounds. Built with React, TypeScript and TailwindCSS.',
       },
       aerovizla: {
-        title: 'AeroVizla - Aviation Dashboard',
-        desc: 'Interactive dashboard visualizing aviation data in Venezuela. Includes airline metrics, airports, routes and punctuality analysis with Chart.js.',
+        title: 'aerovizla',
+        desc: 'Interactive dashboard to visualize and analyze aviation sector data in Venezuela. Displays airline statistics, airport traffic, popular routes, customer satisfaction and flight punctuality with dynamic charts.',
       },
       chat: {
         title: 'Real-Time Chat',

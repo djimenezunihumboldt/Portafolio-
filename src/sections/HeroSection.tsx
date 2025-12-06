@@ -166,7 +166,7 @@ const HeroSection = () => {
           >
             <motion.button
               onClick={() => scrollToSection('projects')}
-              className="group relative bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 overflow-hidden"
+              className="group relative bg-primary-600 hover:bg-primary-700 hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 overflow-hidden"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -176,7 +176,7 @@ const HeroSection = () => {
             </motion.button>
             <motion.button
               onClick={() => scrollToSection('contact')}
-              className="border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-600 dark:hover:bg-primary-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+              className="border-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-600 dark:hover:bg-primary-500 hover:text-white hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
@@ -186,7 +186,7 @@ const HeroSection = () => {
             <motion.a
               href={`${import.meta.env.BASE_URL}cv-daniel-jimenez.pdf`}
               download="CV-Daniel-Jimenez.pdf"
-              className="group flex items-center gap-2 bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+              className="group flex items-center gap-2 bg-accent-600 hover:bg-accent-700 hover:shadow-[0_0_25px_rgba(200,100,200,0.5)] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"

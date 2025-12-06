@@ -118,11 +118,29 @@ const CertificationsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="grid md:grid-cols-2 gap-8">
-              {featuredCerts.map((cert) => (
+              {featuredCerts.map((cert, index) => {
+                // Asignar colores de glow variados basados en el índice
+                const glowColors = [
+                  'rgba(59, 130, 246, 0.5)',   // blue
+                  'rgba(34, 197, 94, 0.5)',    // green
+                  'rgba(168, 85, 247, 0.5)',   // purple
+                  'rgba(234, 88, 12, 0.5)',    // orange
+                  'rgba(236, 72, 153, 0.5)',   // pink
+                  'rgba(59, 130, 246, 0.5)'    // repeat blue
+                ];
+                
+                const glowColor = glowColors[index % glowColors.length];
+                const glowColorBright = glowColor.replace('0.5', '0.7');
+                
+                return (
                 <motion.div
                   key={cert.id}
-                  className="group bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-secondary-700"
-                  whileHover={{ y: -5 }}
+                  className="group bg-white dark:bg-secondary-800 rounded-2xl shadow-lg transition-all duration-500 overflow-hidden border border-gray-100 dark:border-secondary-700"
+                  style={{
+                    '--cert-glow': glowColor,
+                    '--cert-glow-bright': glowColorBright
+                  } as React.CSSProperties}
+                  whileHover={{ y: -5, boxShadow: `0 0 40px ${glowColorBright}, 0 25px 50px -12px rgba(0, 0, 0, 0.25)` }}
                 >
                   <div className="flex flex-col md:flex-row">
                     {/* Image */}
@@ -185,7 +203,8 @@ const CertificationsSection = () => {
                     </div>
                   </div>
                 </motion.div>
-              ))}
+              );
+              })}
             </div>
           </motion.div>
         )}

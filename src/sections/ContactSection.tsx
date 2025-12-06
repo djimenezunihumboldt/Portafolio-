@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { Phone, MapPin, Send, Github, Linkedin, FileDown, Shield } from 'lucide-react';
+import { Phone, MapPin, Send, Github, Linkedin, FileDown } from 'lucide-react';
 import { BsTwitterX, BsWhatsapp } from 'react-icons/bs';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useLanguage } from '../hooks/useLanguage';
 import emailjs from '@emailjs/browser';
 import Toast, { ToastType } from '../components/Toast';
@@ -9,7 +8,6 @@ import { AnalyticsEvents } from '../utils/analytics';
 
 const ContactSection = () => {
   const { t, language } = useLanguage();
-  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,21 +53,6 @@ const ContactSection = () => {
     if (!emailRegex.test(formData.email)) {
       showToast(t('contact.alert.emailInvalid'), 'warning');
       return;
-    }
-
-    // Execute reCAPTCHA v3
-    if (executeRecaptcha) {
-      try {
-        const token = await executeRecaptcha('contact_form');
-        if (!token) {
-          showToast(language === 'es' ? 'Error de verificación. Intenta de nuevo.' : 'Verification error. Please try again.', 'error');
-          return;
-        }
-        // In production, you should verify this token on your backend
-        console.log('reCAPTCHA token obtained:', token.substring(0, 20) + '...');
-      } catch {
-        console.warn('reCAPTCHA not available, proceeding without verification');
-      }
     }
 
     setIsLoading(true);
@@ -215,20 +198,10 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* reCAPTCHA Notice */}
-              <div className="flex items-center gap-2 text-xs text-secondary-500 dark:text-secondary-400">
-                <Shield size={14} />
-                <span>
-                  {language === 'es' 
-                    ? 'Este formulario está protegido por reCAPTCHA de Google.' 
-                    : 'This form is protected by Google reCAPTCHA.'}
-                </span>
-              </div>
-
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 disabled:cursor-not-allowed text-white px-6 py-4 rounded-lg font-semibold text-lg transition-colors duration-200 flex items-center justify-center space-x-2 transform hover:scale-105 disabled:hover:scale-100"
+                className="w-full bg-primary-600 hover:bg-primary-700 hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] disabled:bg-primary-400 disabled:cursor-not-allowed disabled:shadow-none text-white px-6 py-4 rounded-lg font-semibold text-lg transition-all duration-200 flex items-center justify-center space-x-2 transform hover:scale-105 disabled:hover:scale-100"
               >
                 {isLoading ? (
                   <>

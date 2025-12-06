@@ -257,14 +257,27 @@ const SkillsSection = () => {
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {skillCategories.map((category, categoryIndex) => (
+              {skillCategories.map((category, categoryIndex) => {
+                const glowColors = [
+                  'rgba(6, 182, 212, 0.5)', // cyan para Frontend
+                  'rgba(34, 197, 94, 0.5)', // green para Backend
+                  'rgba(168, 85, 247, 0.5)' // purple para Tools
+                ];
+                const glowColor = glowColors[categoryIndex];
+                const glowColorBright = glowColors[categoryIndex].replace('0.5', '0.7');
+                
+                return (
                 <motion.div 
                   key={categoryIndex} 
-                  className="group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-secondary-700 overflow-hidden"
+                  className={`group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg hover:shadow-[0_0_30px_var(--glow-color)] transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-secondary-700 overflow-hidden`}
+                  style={{
+                    '--glow-color': glowColor,
+                    '--glow-color-bright': glowColorBright
+                  } as React.CSSProperties}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: categoryIndex * 0.15 }}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, boxShadow: `0 0 40px ${glowColorBright}, 0 25px 50px -12px rgba(0, 0, 0, 0.25)` }}
                 >
                   {/* Background Gradient on Hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -313,7 +326,8 @@ const SkillsSection = () => {
                     ))}
                   </div>
                 </motion.div>
-              ))}
+              );
+              })}
             </motion.div>
           ) : (
             <motion.div
@@ -324,13 +338,29 @@ const SkillsSection = () => {
               transition={{ duration: 0.4 }}
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {services.map((service, index) => (
+              {services.map((service, index) => {
+                // Extract color values from gradient strings
+                let glowColor = 'rgba(59, 130, 246, 0.5)'; // default blue
+                if (service.color.includes('green')) glowColor = 'rgba(34, 197, 94, 0.5)';
+                if (service.color.includes('purple')) glowColor = 'rgba(168, 85, 247, 0.5)';
+                if (service.color.includes('orange')) glowColor = 'rgba(234, 88, 12, 0.5)';
+                if (service.color.includes('pink')) glowColor = 'rgba(236, 72, 153, 0.5)';
+                if (service.color.includes('indigo')) glowColor = 'rgba(99, 102, 241, 0.5)';
+                
+                const glowColorBright = glowColor.replace('0.5', '0.7');
+                
+                return (
                 <motion.div
                   key={index}
-                  className={`group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-secondary-700 overflow-hidden`}
+                  className={`group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg transition-all duration-500 transform hover:-translate-y-2 border border-gray-100 dark:border-secondary-700 overflow-hidden`}
+                  style={{
+                    '--service-glow': glowColor,
+                    '--service-glow-bright': glowColorBright
+                  } as React.CSSProperties}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ boxShadow: `0 0 40px ${glowColorBright}, 0 25px 50px -12px rgba(0, 0, 0, 0.25)` }}
                 >
                   {/* Background Gradient on Hover */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
@@ -351,7 +381,8 @@ const SkillsSection = () => {
                   {/* Decorative Element */}
                   <div className={`absolute -bottom-2 -right-2 w-20 h-20 bg-gradient-to-br ${service.color} opacity-10 rounded-full blur-xl group-hover:opacity-20 transition-opacity duration-500`} />
                 </motion.div>
-              ))}
+              );
+              })}
             </motion.div>
           )}
         </AnimatePresence>

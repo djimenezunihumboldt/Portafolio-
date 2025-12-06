@@ -220,7 +220,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-300"
                 >
                   <FaExternalLinkAlt />
                   {language === 'es' ? 'Ver Demo' : 'View Demo'}
@@ -231,7 +231,7 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-800 dark:bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-700 dark:hover:bg-gray-600 hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-300"
                 >
                   <FaGithub />
                   GitHub

@@ -30,25 +30,43 @@ const ProjectsSection = () => {
   const allProjects: ProjectData[] = [
     {
       id: 1,
-      title: t('projects.items.finanzas.title'),
-      description: t('projects.items.finanzas.desc'),
-      image: `${import.meta.env.BASE_URL}Finanzas Personales VE.png`,
-      technologies: ['React', 'Vite', 'TypeScript', 'TailwindCSS', 'LocalStorage'],
-      githubUrl: 'https://github.com/djimenezunihumboldt/Finanzas-Personales-Ve',
-      liveUrl: 'https://djimenezunihumboldt.github.io/Finanzas-Personales-Ve/',
+      title: t('projects.items.aerovizla.title'),
+      description: t('projects.items.aerovizla.desc'),
+      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop',
+      technologies: ['HTML5', 'JavaScript', 'TailwindCSS', 'Chart.js', 'Node.js', 'Express', 'PostgreSQL'],
+      githubUrl: 'https://github.com/djimenezunihumboldt/AeroVizla',
+      liveUrl: 'https://djimenezunihumboldt.github.io/AeroVizla/',
       date: '2025',
-      category: t('projects.frontend'),
+      category: t('projects.backend'),
       images: [
-        `${import.meta.env.BASE_URL}Finanzas Personales VE.png`,
-        'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop'
       ],
-      features: language === 'es' 
-        ? ['Gestión de gastos e ingresos', 'Gráficos interactivos', 'Almacenamiento local', 'Interfaz responsive']
-        : ['Expense and income management', 'Interactive charts', 'Local storage', 'Responsive interface']
+      features: language === 'es'
+        ? ['Dashboard interactivo con KPIs', 'Análisis de aerolíneas y puntualidad', 'Explorador de rutas aéreas', 'Gráficos con Chart.js', 'Colores patrios de Venezuela', 'API REST con Node.js']
+        : ['Interactive dashboard with KPIs', 'Airlines and punctuality analysis', 'Flight routes explorer', 'Chart.js visualizations', 'Venezuela patriotic colors', 'REST API with Node.js']
     },
     {
       id: 2,
+      title: t('projects.items.weather.title'),
+      description: t('projects.items.weather.desc'),
+      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop',
+      technologies: ['React', 'TypeScript', 'TailwindCSS', 'React Query', 'Zustand', 'OpenWeather API', 'Framer Motion'],
+      githubUrl: 'https://github.com/djimenezunihumboldt/weather-app',
+      liveUrl: 'https://djimenezunihumboldt.github.io/weather-app/',
+      date: '2025',
+      category: t('projects.frontend'),
+      images: [
+        'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&h=600&fit=crop'
+      ],
+      features: language === 'es'
+        ? ['Pronóstico en tiempo real', 'Geolocalización automática', 'Búsqueda de ciudades', 'Pronóstico de 5 días', 'Ciudades favoritas', 'Fondo dinámico según clima']
+        : ['Real-time forecast', 'Automatic geolocation', 'City search', '5-day forecast', 'Favorite cities', 'Dynamic weather background']
+    },
+    {
+      id: 3,
       title: t('projects.items.analytics.title'),
       description: t('projects.items.analytics.desc'),
       image: `${import.meta.env.BASE_URL}analytics-dashboard.png`,
@@ -67,7 +85,7 @@ const ProjectsSection = () => {
         : ['Interactive dashboard', 'Chart.js graphs', 'Data analysis', 'Export reports']
     },
     {
-      id: 3,
+      id: 4,
       title: t('projects.items.university.title'),
       description: t('projects.items.university.desc'),
       image: `${import.meta.env.BASE_URL}proyecto1.png`,
@@ -85,7 +103,26 @@ const ProjectsSection = () => {
         : ['University system', 'Student management', 'Admin panel', 'REST API']
     },
     {
-      id: 4,
+      id: 5,
+      title: t('projects.items.finanzas.title'),
+      description: t('projects.items.finanzas.desc'),
+      image: `${import.meta.env.BASE_URL}Finanzas Personales VE.png`,
+      technologies: ['React', 'Vite', 'TypeScript', 'TailwindCSS', 'LocalStorage'],
+      githubUrl: 'https://github.com/djimenezunihumboldt/Finanzas-Personales-Ve',
+      liveUrl: 'https://djimenezunihumboldt.github.io/Finanzas-Personales-Ve/',
+      date: '2025',
+      category: t('projects.frontend'),
+      images: [
+        `${import.meta.env.BASE_URL}Finanzas Personales VE.png`,
+        'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop',
+        'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+      ],
+      features: language === 'es' 
+        ? ['Gestión de gastos e ingresos', 'Gráficos interactivos', 'Almacenamiento local', 'Interfaz responsive']
+        : ['Expense and income management', 'Interactive charts', 'Local storage', 'Responsive interface']
+    },
+    {
+      id: 6,
       title: t('projects.items.portfolio.title'),
       description: t('projects.items.portfolio.desc'),
       image: 'https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=800&h=600&fit=crop',
@@ -101,43 +138,6 @@ const ProjectsSection = () => {
       features: language === 'es'
         ? ['Control de nave espacial', 'Sistema de vidas y puntuación', 'Power-ups (Escudo, Disparo Rápido)', 'Enemigos perseguidores', 'High Score guardado', 'Efectos de sonido']
         : ['Spaceship control', 'Lives and score system', 'Power-ups (Shield, Rapid Fire)', 'Chaser enemies', 'Saved High Score', 'Sound effects']
-    },
-    {
-      id: 5,
-      title: t('projects.items.weather.title'),
-      description: t('projects.items.weather.desc'),
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop',
-      technologies: ['React', 'TypeScript', 'TailwindCSS', 'React Query', 'Zustand', 'OpenWeather API', 'Framer Motion'],
-      githubUrl: 'https://github.com/djimenezunihumboldt/weather-app',
-      liveUrl: 'https://djimenezunihumboldt.github.io/weather-app/',
-      date: '2025',
-      category: t('projects.frontend'),
-      images: [
-        'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&h=600&fit=crop'
-      ],
-      features: language === 'es'
-        ? ['Pronóstico en tiempo real', 'Geolocalización automática', 'Búsqueda de ciudades', 'Pronóstico de 5 días', 'Ciudades favoritas', 'Fondo dinámico según clima']
-        : ['Real-time forecast', 'Automatic geolocation', 'City search', '5-day forecast', 'Favorite cities', 'Dynamic weather background']
-    },
-    {
-      id: 6,
-      title: t('projects.items.aerovizla.title'),
-      description: t('projects.items.aerovizla.desc'),
-      image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop',
-      technologies: ['HTML5', 'JavaScript', 'TailwindCSS', 'Chart.js', 'Node.js', 'Express', 'PostgreSQL'],
-      githubUrl: 'https://github.com/djimenezunihumboldt/AeroVizla',
-      liveUrl: 'https://djimenezunihumboldt.github.io/AeroVizla/',
-      date: '2025',
-      category: t('projects.frontend'),
-      images: [
-        'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1569629743817-70d8db6c323b?w=800&h=600&fit=crop',
-        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop'
-      ],
-      features: language === 'es'
-        ? ['Dashboard interactivo con KPIs', 'Análisis de aerolíneas y puntualidad', 'Explorador de rutas aéreas', 'Gráficos con Chart.js', 'Colores patrios de Venezuela', 'API REST con Node.js']
-        : ['Interactive dashboard with KPIs', 'Airlines and punctuality analysis', 'Flight routes explorer', 'Chart.js visualizations', 'Venezuela patriotic colors', 'REST API with Node.js']
     }
   ];
   
@@ -306,9 +306,9 @@ const ProjectsSection = () => {
             >
             <AnimatedSection delay={index * 0.1}>
               <motion.div 
-                className="group bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden h-full flex flex-col relative"
+                className="group bg-white dark:bg-secondary-800 rounded-2xl shadow-lg overflow-hidden h-full flex flex-col relative transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)]"
                 whileHover={{ 
-                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                  boxShadow: "0 0 40px rgba(99, 102, 241, 0.6), 0 25px 50px -12px rgba(0, 0, 0, 0.25)",
                 }}
                 transition={{ duration: 0.3 }}
               >

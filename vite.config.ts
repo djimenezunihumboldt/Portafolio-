@@ -56,7 +56,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/project-bolt-sb1-afdjf5g4/',
+  base: '/portafolio/',
   build: {
     rollupOptions: {
       output: {

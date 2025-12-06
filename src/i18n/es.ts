@@ -186,8 +186,8 @@ export const es = {
         desc: 'Aplicación meteorológica profesional con geolocalización, pronóstico de 5 días, ciudades favoritas y fondos dinámicos. Desarrollada con React, TypeScript y TailwindCSS.',
       },
       aerovizla: {
-        title: 'AeroVizla - Dashboard de Aviación',
-        desc: 'Dashboard interactivo que visualiza datos de aviación en Venezuela. Incluye métricas de aerolíneas, aeropuertos, rutas y análisis de puntualidad con Chart.js.',
+        title: 'aerovizla',
+        desc: 'Dashboard interactivo para visualizar y analizar datos del sector aeronáutico en Venezuela. Muestra estadísticas de aerolíneas, tráfico de aeropuertos, rutas más frecuentes, satisfacción del cliente y puntualidad de vuelos con gráficos dinámicos.',
       },
       chat: {
         title: 'Chat en Tiempo Real',

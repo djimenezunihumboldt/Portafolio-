@@ -50,9 +50,22 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-2xl font-bold text-primary-600 hover:text-accent-500 transition-colors duration-300"
+              className="relative group"
             >
-              {t('nav.portfolio')}
+              <div className="relative inline-block">
+                {/* Fondo degradado */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Texto principal */}
+                <span className="relative block text-2xl font-bold px-4 py-2 rounded-lg 
+                  bg-gradient-to-r from-primary-600 to-primary-500 dark:from-primary-500 dark:to-accent-400
+                  text-white dark:text-white
+                  shadow-lg dark:shadow-primary-500/30
+                  group-hover:shadow-xl group-hover:shadow-primary-500/50 dark:group-hover:shadow-primary-500/50
+                  transition-all duration-300">
+                  {t('nav.portfolio')}
+                </span>
+              </div>
             </button>
           </div>
 

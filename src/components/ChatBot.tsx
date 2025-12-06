@@ -79,12 +79,42 @@ export default function ChatBot() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [positionTop, setPositionTop] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Detectar si el chat debe estar arriba o abajo
+  useEffect(() => {
+    const handleScroll = () => {
+      if (chatRef.current && isOpen) {
+        const rect = chatRef.current.getBoundingClientRect();
+        // Si el chat está muy cerca del fondo (menos de 100px), mover arriba
+        if (window.innerHeight - rect.top < 100) {
+          setPositionTop(true);
+        } else {
+          setPositionTop(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    
+    // Llamar una vez al abrir
+    if (isOpen) {
+      setTimeout(handleScroll, 100);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     scrollToBottom();
@@ -199,16 +229,17 @@ export default function ChatBot() {
       {/* Chat Window */}
       {isOpen && (
         <div
-          className={`fixed z-40 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 
-            bottom-20 right-4 left-4 sm:left-auto sm:right-6 sm:bottom-24
-            w-auto sm:w-80 md:w-96
-            max-w-[calc(100vw-2rem)] sm:max-w-96
-            ${isMinimized ? 'h-14' : 'h-[70vh] sm:h-[450px] max-h-[500px]'}`}
+          ref={chatRef}
+          className={`fixed z-40 bg-white/85 dark:bg-gray-900/75 backdrop-blur-lg rounded-2xl shadow-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-700
+            ${positionTop ? 'top-24 sm:top-32 bottom-auto' : 'bottom-20 sm:bottom-24 top-auto'} right-4 left-4 sm:left-auto sm:right-6
+            w-auto sm:w-72 md:w-80
+            max-w-[calc(100vw-2rem)] sm:max-w-80
+            ${isMinimized ? 'h-14' : 'h-[60vh] sm:h-[380px] max-h-[400px]'}`}
         >
           {/* Header */}
-          <div className="bg-primary text-white p-3 sm:p-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-primary to-primary/90 text-white p-3 sm:p-4 flex items-center justify-between shadow-md">
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/30 flex items-center justify-center">
                 <FaRobot className="text-sm sm:text-lg" />
               </div>
               <div>
@@ -234,7 +265,7 @@ export default function ChatBot() {
           {!isMinimized && (
             <>
               {/* Messages */}
-              <div className="h-[calc(70vh-180px)] sm:h-[280px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
+              <div className="h-[calc(60vh-180px)] sm:h-[220px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
                 {messages.map((message) => (
                   <div
                     key={message.id}
@@ -254,8 +285,8 @@ export default function ChatBot() {
                     <div
                       className={`max-w-[80%] sm:max-w-[75%] p-2.5 sm:p-3 rounded-2xl ${
                         message.isBot
-                          ? 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-tl-none'
-                          : 'bg-primary text-white rounded-tr-none'
+                          ? 'bg-gray-150 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-tl-none border border-gray-300 dark:border-gray-600 shadow-sm'
+                          : 'bg-primary text-white rounded-tr-none border border-primary/80 shadow-sm'
                       }`}
                     >
                       <p className="text-xs sm:text-sm">{message.text}</p>
@@ -301,7 +332,7 @@ export default function ChatBot() {
               )}
 
               {/* Input */}
-              <div className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="p-3 sm:p-4 border-t border-gray-200 dark:border-gray-700 bg-white/50 dark:bg-gray-800/50">
                 <div className="flex gap-2">
                   <input
                     ref={inputRef}
@@ -310,7 +341,7 @@ export default function ChatBot() {
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                     placeholder={language === 'es' ? 'Escribe un mensaje...' : 'Type a message...'}
-                    className="flex-1 px-3 sm:px-4 py-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="flex-1 px-3 sm:px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600"
                   />
                   <button
                     onClick={() => sendMessage()}

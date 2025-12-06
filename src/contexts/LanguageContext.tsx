@@ -137,6 +137,8 @@ const translations: Record<Language, Record<string, string>> = {
   'projects.items.ecommerce.desc': 'Plataforma de comercio electrónico completa con carrito de compras, pasarela de pagos y panel de administración.',
   'projects.items.weather.title': 'App del Clima',
   'projects.items.weather.desc': 'Aplicación meteorológica con geolocalización, pronóstico extendido y datos en tiempo real de OpenWeather API.',
+  'projects.items.aerovizla.title': 'Aerovizla',
+  'projects.items.aerovizla.desc': 'Dashboard interactivo para visualizar y analizar datos del sector aeronáutico en Venezuela. Muestra estadísticas de aerolíneas, tráfico de aeropuertos, rutas más frecuentes, satisfacción del cliente y puntualidad de vuelos con gráficos dinámicos.',
   'projects.items.chat.title': 'Chat en Tiempo Real',
   'projects.items.chat.desc': 'Aplicación de chat con mensajería instantánea, salas de conversación y notificaciones push usando Socket.io.',
     
@@ -307,6 +309,8 @@ const translations: Record<Language, Record<string, string>> = {
   'projects.items.ecommerce.desc': 'Complete e-commerce platform with shopping cart, payment gateway and admin panel.',
   'projects.items.weather.title': 'Weather App',
   'projects.items.weather.desc': 'Weather application with geolocation, extended forecast and real-time data from OpenWeather API.',
+  'projects.items.aerovizla.title': 'Aerovizla',
+  'projects.items.aerovizla.desc': 'Interactive dashboard to visualize and analyze aviation sector data in Venezuela. Displays airline statistics, airport traffic, popular routes, customer satisfaction and flight punctuality with dynamic charts.',
   'projects.items.chat.title': 'Real-Time Chat',
   'projects.items.chat.desc': 'Chat application with instant messaging, chat rooms and push notifications using Socket.io.',
     

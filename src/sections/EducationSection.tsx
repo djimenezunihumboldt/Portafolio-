@@ -71,7 +71,15 @@ const EducationSection = () => {
               />
               
               <div className="space-y-8">
-                {educationItems.map((edu, index) => (
+                {educationItems.map((edu, index) => {
+                  // Obtener color del glow basado en el gradiente
+                  let glowColor = 'rgba(99, 102, 241, 0.5)'; // default primary
+                  if (edu.color.includes('blue')) glowColor = 'rgba(59, 130, 246, 0.5)';
+                  if (edu.color.includes('accent')) glowColor = 'rgba(200, 100, 200, 0.5)';
+                  
+                  const glowColorBright = glowColor.replace('0.5', '0.7');
+                  
+                  return (
                   <motion.div 
                     key={index} 
                     className="relative flex items-start"
@@ -105,8 +113,12 @@ const EducationSection = () => {
                     {/* Content */}
                     <div className="ml-8 flex-1">
                       <motion.div 
-                        className="group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                        whileHover={{ y: -5, scale: 1.02 }}
+                        className="group relative bg-white dark:bg-secondary-800 rounded-2xl p-8 shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-secondary-700"
+                        style={{
+                          '--edu-glow': glowColor,
+                          '--edu-glow-bright': glowColorBright
+                        } as React.CSSProperties}
+                        whileHover={{ y: -5, scale: 1.02, boxShadow: `0 0 40px ${glowColorBright}, 0 25px 50px -12px rgba(0, 0, 0, 0.25)` }}
                         transition={{ duration: 0.3 }}
                       >
                         {/* Background gradient on hover */}
@@ -185,7 +197,8 @@ const EducationSection = () => {
                       </motion.div>
                     </div>
                   </motion.div>
-                ))}
+                );
+                })}
               </div>
             </div>
           </div>

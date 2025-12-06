@@ -7,7 +7,6 @@ import ScrollProgress from './components/ScrollProgress';
 import EasterEgg from './components/EasterEgg';
 import ChatBot from './components/ChatBot';
 import Preloader from './components/Preloader';
-import WhatsAppButton from './components/WhatsAppButton';
 import { SoundProvider } from './hooks/useSoundEffects';
 import { HighContrastProvider } from './contexts/HighContrastContext';
 import { SectionLoader, TimelineLoader } from './components/LazyLoad';
@@ -76,9 +75,6 @@ function App() {
           
           {/* ChatBot */}
           <ChatBot />
-          
-          {/* WhatsApp Floating Button */}
-          <WhatsAppButton />
           
           <Navbar />
           <main 
