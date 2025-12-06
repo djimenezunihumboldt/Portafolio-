@@ -56,7 +56,7 @@ export default defineConfig({
       },
     }),
   ],
-  base: '/portafolio/',
+  base: '/Portafolio-/',
   build: {
     rollupOptions: {
       output: {
