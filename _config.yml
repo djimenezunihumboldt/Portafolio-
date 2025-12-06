@@ -1,0 +1,8 @@
+# GitHub Pages configuration
+# Tell GitHub Pages to serve content from the docs/ folder
+
+# Use docs folder as the source for GitHub Pages
+# This makes https://djimenezunihumboldt.github.io/Portafolio-/ 
+# serve files from the docs/ folder automatically
+
+theme: null

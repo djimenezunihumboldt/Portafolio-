@@ -1,0 +1,6 @@
+# GitHub Pages Configuration
+# This file tells GitHub Pages to serve content from the docs/ folder
+
+# The docs folder contains the built portfolio website
+# When you access https://djimenezunihumboldt.github.io/Portafolio-/
+# GitHub Pages will automatically serve files from this docs/ folder
