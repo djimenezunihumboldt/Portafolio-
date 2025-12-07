@@ -58,6 +58,7 @@ export default defineConfig(({ command }) => ({
   ],
   base: command === 'serve' ? '/' : '/Portafolio-/',
   build: {
+    outDir: 'docs',
     rollupOptions: {
       output: {
         manualChunks: {
